@@ -1,0 +1,62 @@
+(domain.values)
+
+@Value
+[ProductName]
+value: String
+
+@Value
+[ProductPrice]
+value: Int32
+
+@Value
+[Quantity]
+value: Int32
+
+@GenerateDTO
+@Value
+[Product]
+name:  ProductName
+price: ProductPrice
+
+(domain.data)
+
+@GenerateDTO
+[SalesSummary]
+description: String
+details: List<SalesDetail>
+
+[SalesDetail]
+product: Product
+quantity: Quantity
+
+
+(domain.services)
+
+<<interface>>
+[Service1]
+@export("/method1/{param1}/{param2}")
++ method1(param1: String, param2: Int32) : String
+
+@export("/method2", method="Post")
++ method2(param1: Product) : SalesSummary
+
+@export("/method2a", method="Post")
++ method2a(param1: List<Product>) : List<SalesSummary>
+
+@Service
+[Service1Impl:Service1]
+
+
+(microservice1.controllers)
+@RestController
+@BaseUrl("/base")
+@DI(["Service1"])
+
+@useDTO
+[Service1RestController]
+
+
+(microservice2.clients)
+
+@RestClient("Service1RestController")
+[Service1RestClient]

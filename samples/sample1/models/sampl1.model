@@ -1,0 +1,6 @@
+
+(domain.values)
+
+@Value
+[ProductName]
+value: String

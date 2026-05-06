@@ -1,0 +1,36 @@
+(domain.values)
+
+@GenerateDTO
+@Value
+[ProductName]
+value: String
+
+@GenerateDTO
+@Value
+[ProductPrice]
+value: Int32
+
+@GenerateDTO
+@Value
+[Product]
+name:  ProductName
+price: ProductPrice
+
+(domain.services)
+
+<<interface>>
+[AppService1]
++ method1(name: String, price: Int32) : Boolean
+
+<<interface>>
+[DomService1]
++ method2(name: ProductName, param2: ProductPrice) : Product
+
+(domain.services.impl)
+
+@Service
+[DomService1Impl:DomService1]
+
+@Service
+@DI("DomService1")
+[AppService1Impl:AppService1]

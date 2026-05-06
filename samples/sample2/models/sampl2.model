@@ -1,0 +1,16 @@
+(domain.values)
+
+@Value
+[ProductName]
+value: String
+
+@GenerateDTO
+@Value
+[ProductPrice]
+value: Int32
+
+
+(domain.dto)
+
+@DTO("ProductName")
+[ProductNameDto]
