@@ -104,10 +104,10 @@ fun main() {
 [ProductName]    // (3) Class Definition 
 value: String    // (4) Attribute Definition
 ```
-(1) Package Path. models described after this line belongs to the package.
-(2) Decorator Value with no parameter.
-(3) Define ProductName class.
-(4) Define Attribute named value belongs to ProductName class.
+(1) Package Path. models described after this line belongs to the package.   
+(2) Decorator Value with no parameter.   
+(3) Define ProductName class.   
+(4) Define Attribute named value belongs to ProductName class.   
 
 ------------------------------------------------------------------------
 ## Sample2
@@ -154,8 +154,8 @@ value: Int32
 @DTO("ProductName")  // (2)
 [ProductNameDto]
 ```
-(1) DTO agent newly creates DTO models for models with @GenerateDTO. The created DTO models are stored in relative package .dto, i,e. domain.values.dto in this case.  
-(2) DTO agent build ProductNameDTO ad mutable from ProductName.
+(1) DTO agent newly creates DTO models for models with @GenerateDTO. The created DTO models are stored in relative package .dto, i,e. domain.values.dto in this case.   
+(2) DTO agent build ProductNameDTO ad mutable from ProductName.   
 
 ------------------------------------------------------------------------
 ## Sample3
@@ -181,7 +181,7 @@ fun main() {
     }
 }
 ```
-(1) SpringAgents contains Spring Service agent.
+(1) SpringAgents contains Spring Service agent.   
 
 ### Model
 ```text
@@ -204,8 +204,8 @@ fun main() {
 @DI("DomService1")                // (2)
 [AppService1Impl:AppService1]
 ```
-(1) Spring Service Agent makes models with @Service Spring Services. 
-(2) Spring Service Agent injects the model specified in the parameter to the target model.
+(1) Spring Service Agent makes models with @Service Spring Services.    
+(2) Spring Service Agent injects the model specified in the parameter to the target model.   
 
 ------------------------------------------------------------------------
 ## Sample4
@@ -252,8 +252,8 @@ fun main() {
     }
 }
 ```
-(1) SpringAgents contains both Spring Rest Controller and Client agents.
-(2) Define three subprojects and allocate all models by package path across these subprojects.
+(1) SpringAgents contains both Spring Rest Controller and Client agents.   
+(2) Define three subprojects and allocate all models by package path across these subprojects.   
 
 ### Model
 ```text
@@ -284,8 +284,8 @@ fun main() {
 @RestClient("Service1RestController") // (7)
 [Service1RestClient]
 ```
-(1) methods with @export are exported by Rest Controller.  Http Get is the default method.
-(2) Rest Controller agent makes models with @RestController RestControllers.
-(3) Optionally users can specify base URL as Rest Controller endpoint.
-(4) In Rest Controller, injected service methods are exported. Call code for the service method is automatically created.  
-(5) If the exported method's parameter and result types has DTO model, use it. 
+(1) methods with @export are exported by Rest Controller.  Http Get is the default method.   
+(2) Rest Controller agent makes models with @RestController RestControllers.   
+(3) Optionally users can specify base URL as Rest Controller endpoint.   
+(4) In Rest Controller, injected service methods are exported. Call code for the service method is automatically created.     
+(5) If the exported method's parameter and result types has DTO model, use it.    
