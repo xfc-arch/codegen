@@ -6,12 +6,20 @@ Open this project in an IDE, such as IntelliJ IDEA, and run the modules listed b
 ------------------------------------------------------------------------
 ## Summary
 
-|         | description                    | decorators                     | DSL                             |
-|---------|--------------------------------|--------------------------------|---------------------------------|
-| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/Sample1.kt |
-| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/Sample2.kt |
-| Sample3 | Service sample                 | @Service, @DI                  | ./src/kotlin/samples/Sample3.kt |
-| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/Sample4.kt |
+### Samples for Java
+|         | description                    | decorators                     | DSL                                 |
+|---------|--------------------------------|--------------------------------|-------------------------------------|
+| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/JavaSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/JavaSample2.kt |
+| Sample3 | Service sample                 | @Service, @DI                  | ./src/kotlin/samples/JavaSample3.kt |
+| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/JavaSample4.kt |
+
+### Samples for TypeScript
+|         | description                    | decorators                     | DSL                               |
+|---------|--------------------------------|--------------------------------|-----------------------------------|
+| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/TsSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/TsSample2.kt |
+
 
 [//]: # (| Sample5 | Agent sample                   |                                | ./src/kotlin/samples/Sample5.kt |)
 
