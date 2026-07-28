@@ -33,6 +33,12 @@ quantity: Quantity
 (domain.services)
 
 <<interface>>
+[Service2]
+
+<<interface>>
+[Service3]
+
+<<interface>>
 [Service1]
 @export("/method1/{param1}/{param2}")
 + method1(param1: String, param2: Int32) : String
@@ -50,7 +56,8 @@ quantity: Quantity
 (microservice1.controllers)
 @RestController
 @BaseUrl("/base")
-@DI(["Service1"])
+@DI(["Service2", "Service3"])
+@ExportModels("Service1")
 
 @useDTO
 [Service1RestController]

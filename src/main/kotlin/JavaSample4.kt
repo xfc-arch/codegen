@@ -61,6 +61,7 @@ fun main() {
             sub("microservice1") {
                 packages {
                     include("microservice1")
+                    include("domain.services")
                 }
             }
 
