@@ -15,14 +15,11 @@ Open this project in an IDE, such as IntelliJ IDEA, and run the modules listed b
 | Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/JavaSample4.kt |
 
 ### Samples for TypeScript
-|         | description                    | decorators                     | DSL                               |
-|---------|--------------------------------|--------------------------------|-----------------------------------|
-| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/TsSample1.kt |
-| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/TsSample2.kt |
-
-
-[//]: # (| Sample5 | Agent sample                   |                                | ./src/kotlin/samples/Sample5.kt |)
-
+|         | description                    | decorators         | DSL                               |
+|---------|--------------------------------|--------------------|-----------------------------------|
+| Sample1 | Value-Object sample            | @value             | ./src/kotlin/samples/TsSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO | ./src/kotlin/samples/TsSample2.kt |
+| Sample4 | Rest Client | @RestClient        | ./src/kotlin/samples/TsSample4.kt |
 
 ------------------------------------------------------------------------
 ## Basic
