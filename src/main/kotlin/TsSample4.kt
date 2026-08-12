@@ -18,8 +18,14 @@ import com.xfc_arch.codegen.domain.agents.java.JavaDataAgent
 import com.xfc_arch.codegen.domain.agents.java.JavaDtoAgent
 import com.xfc_arch.codegen.domain.agents.java.JavaValueAgent
 import com.xfc_arch.codegen.domain.agents.spring.SpringAgents
+import com.xfc_arch.codegen.domain.agents.typescript.TypeScriptDataAgent
+import com.xfc_arch.codegen.domain.agents.typescript.TypeScriptDtoAgent
+import com.xfc_arch.codegen.domain.agents.typescript.TypeScriptRestClient
+import com.xfc_arch.codegen.domain.agents.typescript.TypeScriptValueAgent
+import com.xfc_arch.codegen.domain.core.converters.StdTypeScriptConverter
 import com.xfc_arch.codegen.domain.core.dsl.dsl
 import com.xfc_arch.codegen.domain.core.modules.gradle
+import com.xfc_arch.codegen.domain.core.modules.typescript
 import com.xfc_arch.codegen.utils.getAbsolutePath
 
 fun main() {
@@ -33,8 +39,8 @@ fun main() {
             Copyright (C) 2026 xfc_arch.com            
         """)
 
-        gradle("JavaSpringSample") {
-            basePackage("com.example.demo")
+        typescript("TsSample") {
+            basePackage("app")
 
             filters {
                 attributes {
@@ -43,32 +49,16 @@ fun main() {
             }
 
             agents {
-                include(JavaDataAgent())
-                include(JavaValueAgent())
-                include(JavaDtoAgent("DTO"))
-                include(SpringAgents())
+                include(TypeScriptDataAgent())
+                include(TypeScriptValueAgent())
+                include(TypeScriptDtoAgent())
+                include(TypeScriptRestClient())
             }
 
-            sub("share") {
-                packages {
-                    include("domain.values")
-                    include("domain.data")
-                    include("domain.dto")
-                    include("domain.tables")
-                }
-            }
-
-            sub("microservice1") {
-                packages {
-                    include("microservice1")
-                    include("domain.services")
-                }
-            }
-
-            sub("microservice2") {
-                packages {
-                    include("microservice2")
-                }
+            packages {
+                include("domain.values")
+                include("domain.data")
+                include("microservice2.clients")
             }
         }
     }
