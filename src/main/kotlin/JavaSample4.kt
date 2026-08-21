@@ -20,6 +20,7 @@ import com.xfc_arch.codegen.domain.agents.java.JavaValueAgent
 import com.xfc_arch.codegen.domain.agents.spring.SpringAgents
 import com.xfc_arch.codegen.domain.core.dsl.dsl
 import com.xfc_arch.codegen.domain.core.modules.gradle
+import com.xfc_arch.codegen.domain.exporters.openapi.OpenAPIPlugin
 import com.xfc_arch.codegen.utils.getAbsolutePath
 
 fun main() {
@@ -27,11 +28,16 @@ fun main() {
         runConfig {
             modelPath = getAbsolutePath("codegen/samples/sample4/models")
             outPath = getAbsolutePath("codegen/samples/sample4/out")
+            pluginOutPath = getAbsolutePath("codegen/samples/sample4/plugin_out")
         }
 
         fileHeader("""
             Copyright (C) 2026 xfc_arch.com            
         """)
+
+        plugins {
+            include(OpenAPIPlugin())
+        }
 
         gradle("JavaSpringSample") {
             basePackage("com.example.demo")

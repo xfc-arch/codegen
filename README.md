@@ -136,7 +136,7 @@ dsl {
 }
 ```
 ### Custom Agents
-Uses can easily create custom agents by declaring class extends AbstractAgent in Kotlin.
+Users can easily create custom agents by declaring class extends AbstractAgent in Kotlin.
 ```
 class JavaValueAgent : AbstractAgent() {
 } 
@@ -157,6 +157,22 @@ dsl {
  * etc etc.
  */
 ```
+### Plugins Block
+Plugins block allows user to specify plugin to run.
+```
+dsl {
+    plugins {
+        include(OpenAPIPlugin())
+    }
+```
+### Custom plugin
+Users can easily create plugins by declaring class extends AbstractPlugin.
+basePath is required to specify output sub folder name. 
+```
+class OpenAPIPlugin(basePath: String = "open-api"): AbstractPlugin(basePath) {
+}
+```
+
 ------------------------------------------------------------------------
 ## Modeling Language
 Models are defined in text using a UML-like syntax.

@@ -40,9 +40,15 @@ quantity: Quantity
 
 <<interface>>
 [Service1]
+/** method1 returns a string. */
 @export("/method1/{param1}/{param2}")
 + method1(param1: String, param2: Int32) : String
 
+/**
+ * (method2)
+ * This method takes Product as parameter
+ * and returns SalesSummary.
+ */
 @export("/method2", method="Post")
 + method2(param1: Product) : SalesSummary
 
