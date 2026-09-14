@@ -14,12 +14,20 @@ Open this project in an IDE, such as IntelliJ IDEA, and run the modules listed b
 | Sample3 | Service sample                 | @Service, @DI                  | ./src/kotlin/samples/JavaSample3.kt |
 | Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/JavaSample4.kt |
 
+### Samples for Kotlin
+|         | description                    | decorators                     | DSL                                   |
+|---------|--------------------------------|--------------------------------|---------------------------------------|
+| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/KotlinSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/KotlinSample2.kt |
+| Sample3 | Service sample                 | @Service, @DI                  | ./src/kotlin/samples/KotlinSample3.kt |
+| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/KotlinSample4.kt |
+
 ### Samples for TypeScript
-|         | description                    | decorators         | DSL                               |
-|---------|--------------------------------|--------------------|-----------------------------------|
-| Sample1 | Value-Object sample            | @value             | ./src/kotlin/samples/TsSample1.kt |
-| Sample2 | DTO sample                     | @DTO, @GenerateDTO | ./src/kotlin/samples/TsSample2.kt |
-| Sample4 | Rest Client | @RestClient        | ./src/kotlin/samples/TsSample4.kt |
+|         | description         | decorators         | DSL                               |
+|---------|---------------------|--------------------|-----------------------------------|
+| Sample1 | Value-Object sample | @value             | ./src/kotlin/samples/TsSample1.kt |
+| Sample2 | DTO sample          | @DTO, @GenerateDTO | ./src/kotlin/samples/TsSample2.kt |
+| Sample4 | Rest Client         | @RestClient        | ./src/kotlin/samples/TsSample4.kt |
 
 ------------------------------------------------------------------------
 ## Basic
