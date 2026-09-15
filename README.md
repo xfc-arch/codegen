@@ -24,7 +24,7 @@ please note that we assume no responsibility for the generated code.
 ------------------------------------------------------------------------
 ## Support
 ### Programming Languages
-* Java, TypeScript
+* Java, TypeScript, Kotlin
 ### Frameworks
 * SpringBoot
 ### Build Systems
@@ -35,7 +35,6 @@ please note that we assume no responsibility for the generated code.
 
 ### Additional Programming Languages
 * C#
-* Kotlin
 * Python (experimental)
 * Rust (experimental)
 
