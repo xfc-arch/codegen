@@ -12,15 +12,34 @@ value: Int32
 [Quantity]
 value: Int32
 
-@GenerateDTO
 @Value
 [Product]
 name:  ProductName
 price: ProductPrice
 
+
+(domain.dto)
+
+@DTO("Product")
+[ProductDto]
+
+@DTO("SalesSummary")
+[SalesSummaryDto]
+
+@DTO("ProductName")
+[ProductNameDto]
+
+@DTO("ProductPrice")
+[ProductPriceDto]
+
+@DTO("SalesDetail")
+[SalesDetailDto]
+
+@DTO("Quantity")
+[QuantityDto]
+
 (domain.data)
 
-@GenerateDTO
 [SalesSummary]
 description: String
 details: List<SalesDetail>

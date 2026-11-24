@@ -1,0 +1,117 @@
+(domain.values)
+
+@Value
+[ProductName]
+value: String
+
+@Value
+[ProductPrice]
+value: Int32
+
+@Value
+[Quantity]
+value: Int32
+
+@Value
+[DetailId]
+value1: Int32
+value2: Int32
+
+@Value
+[CategoryId]
+value1: Int32
+value2: Int32
+
+(domain.entities)
+
+@Entity
+[SalesSummary]
+@pk
+id: UUIDv7
+details: List<SalesDetail>
+category1: Category
+category2: Category
+description: String
+
+@Entity
+[SalesDetail]
+@pk
+id: DetailId
+product1: Product
+product2: Product
+quantity: Quantity
+
+@Entity
+[Product]
+@pk @auto_increment
+id: Long
+/** test */
+name:  ProductName
+price: ProductPrice
+salesDate: DateTime
+
+@Entity
+[Category]
+@pk
+id: CategoryId
+name:  String
+
+
+@Entity
+[Settings]
+@pk
+id: UUIDv7
+- fld1: Int32
+- fld2: float
+
+
+(domain.tables)
+
+@Table("SalesSummary")
+[SalesSummaryTbl]
+
+@Table("SalesDetail")
+[SalesDetailTbl]
+
+@Table("Product")
+[ProductTbl]
+
+@Table("Category")
+[CategoryTbl]
+
+@Table("Settings")
+[SettingsTbl]
+
+(domain.mappers)
+
+@Mapper("Product")
+[ProductMapper]
+
+@Mapper("Category")
+[CategoryMapper]
+
+@Mapper("SalesDetail")
+[SalesDetailMapper]
+
+@Mapper("SalesSummary")
+[SalesSummaryMapper]
+
+@Mapper("Settings")
+[SettingsMapper]
+
+(domain.repositories)
+
+@Repository("SalesSummary")
+[SalesSummaryRepository]
+
+@Repository("SalesDetail")
+[SalesDetailRepository]
+
+@Repository("Product")
+[ProductRepository]
+
+@Repository("Category")
+[CategoryRepository]
+
+@Repository("Settings")
+[SettingsRepository]

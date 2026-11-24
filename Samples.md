@@ -7,27 +7,30 @@ Open this project in an IDE, such as IntelliJ IDEA, and run the modules listed b
 ## Summary
 
 ### Samples for Java
-|         | description                    | decorators                     | DSL                                 |
-|---------|--------------------------------|--------------------------------|-------------------------------------|
-| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/JavaSample1.kt |
-| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/JavaSample2.kt |
-| Sample3 | Service sample                 | @Service, @DI                  | ./src/kotlin/samples/JavaSample3.kt |
-| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/JavaSample4.kt |
+|         | description                    | decorators                                  | DSL                                 |
+|---------|--------------------------------|---------------------------------------------|-------------------------------------|
+| Sample1 | Value-Object sample            | @value                                      | ./src/kotlin/samples/JavaSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO                          | ./src/kotlin/samples/JavaSample2.kt |
+| Sample3 | Service sample                 | @Service, @DI                               | ./src/kotlin/samples/JavaSample3.kt |
+| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient              | ./src/kotlin/samples/JavaSample4.kt |
+| Sample5 | Entity<br>Mapper<br>Reposigory | @Entity<br>@Table<br>@Mapper<br>@Repository | ./src/kotlin/samples/JavaSample5.kt |
 
 ### Samples for Kotlin
-|         | description                    | decorators                     | DSL                                   |
-|---------|--------------------------------|--------------------------------|---------------------------------------|
-| Sample1 | Value-Object sample            | @value                         | ./src/kotlin/samples/KotlinSample1.kt |
-| Sample2 | DTO sample                     | @DTO, @GenerateDTO             | ./src/kotlin/samples/KotlinSample2.kt |
-| Sample3 | Service sample                 | @Service, @DI                  | ./src/kotlin/samples/KotlinSample3.kt |
-| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient | ./src/kotlin/samples/KotlinSample4.kt |
+|         | description                    | decorators                                  | DSL                                   |
+|---------|--------------------------------|---------------------------------------------|---------------------------------------|
+| Sample1 | Value-Object sample            | @value                                      | ./src/kotlin/samples/KotlinSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO                          | ./src/kotlin/samples/KotlinSample2.kt |
+| Sample3 | Service sample                 | @Service, @DI                               | ./src/kotlin/samples/KotlinSample3.kt |
+| Sample4 | Rest Controller<br>Rest Client | @RestController<br>@RestClient              | ./src/kotlin/samples/KotlinSample4.kt |
+| Sample5 | Entity<br>Mapper<br>Reposigory | @Entity<br>@Table<br>@Mapper<br>@Repository | ./src/kotlin/samples/KotlinSample5.kt |
 
 ### Samples for TypeScript
-|         | description         | decorators         | DSL                               |
-|---------|---------------------|--------------------|-----------------------------------|
-| Sample1 | Value-Object sample | @value             | ./src/kotlin/samples/TsSample1.kt |
-| Sample2 | DTO sample          | @DTO, @GenerateDTO | ./src/kotlin/samples/TsSample2.kt |
-| Sample4 | Rest Client         | @RestClient        | ./src/kotlin/samples/TsSample4.kt |
+|         | description                    | decorators                                  | DSL                               |
+|---------|--------------------------------|---------------------------------------------|-----------------------------------|
+| Sample1 | Value-Object sample            | @value                                      | ./src/kotlin/samples/TsSample1.kt |
+| Sample2 | DTO sample                     | @DTO, @GenerateDTO                          | ./src/kotlin/samples/TsSample2.kt |
+| Sample4 | Rest Client                    | @RestClient                                 | ./src/kotlin/samples/TsSample4.kt |
+| Sample5 | Entity<br>Mapper<br>Reposigory | @Entity<br>@Table<br>@Mapper<br>@Repository | ./src/kotlin/samples/TsSample5.kt |
 
 ------------------------------------------------------------------------
 ## Basic
@@ -168,7 +171,7 @@ value: Int32
 [ProductNameDto]
 ```
 (1) DTO agent newly creates DTO models for models with @GenerateDTO. The created DTO models are stored in relative package .dto, i,e. domain.values.dto in this case.  
-(2) DTO agent build ProductNameDTO ad mutable from ProductName.
+(2) DTO agent build ProductNameDTO as mutable from ProductName.
 
 ------------------------------------------------------------------------
 ## Sample3
@@ -302,3 +305,61 @@ fun main() {
 (3) Optionally users can specify base URL as Rest Controller endpoint.
 (4) In Rest Controller, injected service methods are exported. Call code for the service method is automatically created.  
 (5) If the exported method's parameter and result types has DTO model, use it. 
+
+------------------------------------------------------------------------
+## Sample5
+Sample5 explains how to use Repository / Mapper Agents.
+
+|        | path                                   | description                          |
+|--------|----------------------------------------|--------------------------------------|
+| DSL    | ./src/kotlin/samples/Sample4.kt        | execute main() to convert the models |
+| Model  | ./samples/sample3/models/sample4.model | text model file(s)                   |
+| Output | ./samples/sample3/out                  | converted files                      |
+
+### DSL
+```kotlin
+fun main() {
+    dsl {
+        gradle("JavaSample") {
+            agents {
+                include(JavaRepositoryAgent())    // (1)
+                include(SpringMybatis())          // (2)
+            }
+        }
+    }
+}
+```
+(1) JavaRepositoryAgent makes models with @Repository Repository Classes which operate mappers.    
+(2) SpringMybatis makes models with @Mapper MyBatis interfaces.
+
+### Model
+```text
+(domain.entities)
+
+@Entity                      // (1)
+[SalesSummary]
+@pk                          // (2)
+id: UUIDv7                   // (3)
+details: List<SalesDetail>   // (4)
+```
+(1) Models with @Entity are Entities and built by built-in Entity Agent.
+(2) Attributes with @pk are Primary Keys.
+(3) UUIDv7 expresses UUID version7. UUID expresses UUID version4.
+(4) List attributes expresses child entities. Children are also required to decorate with @Entity.
+
+```text
+(domain.mappers)
+
+@Mapper("SalesSummary")  // (5)
+[SalesSummaryMapper]
+```
+(5) Models with @Mapper are built as SQL Mapper classes for the entity model described in the decorator parameter.
+
+```text
+(domain.repositories)
+
+@Repository("SalesSummary") // (6)
+[SalesSummaryRepository]
+```
+(6) Models with @Repository are built as Repository classes for the entity model described in the decorator parameter.    
+The entity should have Mapper like described in (5)

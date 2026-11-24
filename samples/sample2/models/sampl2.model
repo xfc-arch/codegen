@@ -4,7 +4,6 @@
 [ProductName]
 value: String
 
-@GenerateDTO
 @Value
 [ProductPrice]
 value: Int32
@@ -14,3 +13,13 @@ value: Int32
 
 @DTO("ProductName")
 [ProductNameDto]
+
+@DTO("ProductPrice")
+[ProductPriceDto]
+
+(domain.data)
+
+@Data
+[Settings]
+- fld1: Int32
+- fld2: List<String>
